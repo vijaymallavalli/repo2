@@ -12,9 +12,13 @@ exports.uploadImages = async (req, res) => {
     let files = Object.values(req.files).flat();
     let images = [];
     for (const file of files) {
-      const url = await uploadToCloudinary(file, path);
-      images.push(url);
-      removeTmp(file.tempFilePath);
+      try {
+        const url = await uploadToCloudinary(file, path);
+        images.push(url);
+        removeTmp(file.tempFilePath);
+      } catch (error) {
+        return res.status(400).json({ message: error.message });
+      }
     }
     res.json(images);
   } catch (error) {
@@ -50,7 +54,9 @@ const uploadToCloudinary = async (file, path) => {
       (err, res) => {
         if (err) {
           removeTmp(file.tempFilePath);
-          return res.status(400).json({ message: "Upload image failed." });
+          // return res.status(400).json({ message: "Upload image failed." });
+          reject({ message: "Upload image failed." });
+
         }
         resolve({
           url: res.secure_url,

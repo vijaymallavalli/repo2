@@ -3,8 +3,8 @@ const { conversation,getConversation } = require("../controllers/conversation");
 const router = express.Router();
 
 
-router.post('/con', conversation)
-router.get('/:userId', getConversation)
+router.post('/postConversation', conversation)
+router.get('/getConversation/:userId', getConversation)
 
 
 module.exports = router;

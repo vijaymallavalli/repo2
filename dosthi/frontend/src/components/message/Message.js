@@ -12,4 +12,6 @@ export default function Message({own}) {
       <div className="messageBottom">30 min ago</div>
     </div>
   );
+
+  
 }

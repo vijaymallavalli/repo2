@@ -83,8 +83,8 @@ app.use('/', userRoutes);
 app.use('/', userFiles);
 app.use('/', userPost);
 app.use('/', userReact);
-app.use("/", conversationRoute);
-app.use("/", messageRoute);
+app.use("/conversation", conversationRoute);
+app.use("/messeage", messageRoute);
 
 const PORT = process.env.PORT || 8000;
 

@@ -15,7 +15,7 @@ const {
   acceptRequest, unfriend, deleteRequest, 
   search, addToSearchHistory, getSearchHistory, removeFromSearch, getFriendsPageInfos
 } = require("../controllers/user");
-const { authUser } = require("../middlewares/auth");
+const { authUser } = require("../middlewares/auth");  
 const router = express.Router();
 router.post("/register", register);
 router.post("/login", login);
